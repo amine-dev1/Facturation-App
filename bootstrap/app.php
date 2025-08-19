@@ -12,7 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        // Add Sanctum's middleware for APIs
+        // ajout sanctum pour l'api
         $middleware->group('api', [
             \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
@@ -22,7 +22,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'sanctum.auth' => \App\Http\Middleware\SanctumAuthenticate::class,
         ]);
         $middleware->validateCsrfTokens( except : [
-            'api/*',// Allow CSRF token for API routes
+            'api/*',// permettre CSRF token pour les routes API
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
