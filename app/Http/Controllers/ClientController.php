@@ -56,11 +56,18 @@ class ClientController extends Controller
     public function show($clientid)
     {
         $client = Client::findOrFail($clientid);
-        $factures = $client->factures()->with('factureslines')->get();
-
-        return response()->json([
-            'client' => $client,
-            'factures' => $factures
-        ]);
+        if($client){
+            $factures = $client->factures()->with('factureslines')->get();
+    
+            return response()->json([
+                'client' => $client,
+                'factures' => $factures
+            ]);
+        }
+        else{
+            return response()->json([
+                "error"=> "Client not found"
+            ], 404);
+        }
     }
 }
