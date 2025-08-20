@@ -78,9 +78,6 @@ Facturation-App/
 │   │   │   ├── Controller.php
 │   │   │   ├── FactureController.php
 │   │   │   └── UserController.php
-│   │   └── Middleware/
-│   │       ├── HandleCors.php
-│   │       └── SanctumAuthenticate.php
 │   └── Models/
 │       ├── Client.php
 │       ├── Facture.php
